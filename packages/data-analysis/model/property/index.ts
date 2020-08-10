@@ -1,9 +1,12 @@
-import { IStrengthProperty } from "./types";
+import { IStrengthProperty, PropertyType } from './types';
+import { v4 } from 'uuid';
 
 class StrengthProperty implements IStrengthProperty {
   id: string;
   value: number;
-  constructor() {
-
+  type = PropertyType.StrengthProperty;
+  constructor(value: number) {
+    this.id = v4();
+    this.value = value;
   }
 }
