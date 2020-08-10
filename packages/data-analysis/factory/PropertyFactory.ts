@@ -6,33 +6,39 @@ import IntelligenceProperty from '../model/Property/IntelligenceProperty';
 import LuckProperty from '../model/Property/LuckProperty';
 import MasterBoxingProperty from '../model/Property/MasterBoxingProperty';
 import { PropertyType, IProperty } from '../model/Property/types';
+import MasterKnifeProperty from '../model/Property/MasterKnifeProperty';
+import MasterSwordProperty from '../model/Property/MasterSwordProperty';
+import MasterMagicProperty from '../model/Property/MasterMagicProperty';
 
 type PropertyCreator = (v: number) => IProperty;
 
 class PropertyFactory {
-  propertyCreatorMap: Map<PropertyType, PropertyCreator>;
+  propertyCreatorMap: Map<PropertyType, PropertyCreator> = new Map();
 
   constructor() {
-    this.propertyCreatorMap.set(PropertyType.StrengthProperty, this.createStrengthProperty);
-    this.propertyCreatorMap.set(PropertyType.HardnessProperty, this.createHardnessProperty);
-    this.propertyCreatorMap.set(PropertyType.AgilityProperty, this.createAgilityProperty);
-    this.propertyCreatorMap.set(PropertyType.IntelligenceProperty, this.createHardnessProperty);
-    this.propertyCreatorMap.set(PropertyType.ConcentrationProperty, this.createConcentrationProperty);
-    this.propertyCreatorMap.set(PropertyType.LuckProperty, this.createLuckProperty);
-    this.propertyCreatorMap.set(PropertyType.MasterBoxingProperty, this.createMasterBoxingProperty);
-    this.propertyCreatorMap.set(PropertyType.MasterKnifeProperty, this.createMasterKnifeProperty);
-    this.propertyCreatorMap.set(PropertyType.MasterSwordProperty, this.createMasterSwordProperty);
-    this.propertyCreatorMap.set(PropertyType.MasterMagicProperty, this.createMasterBoxingProperty);
+    this.propertyCreatorMap
+      .set(PropertyType.StrengthProperty, this.createStrengthProperty)
+      .set(PropertyType.HardnessProperty, this.createHardnessProperty)
+      .set(PropertyType.AgilityProperty, this.createAgilityProperty)
+      .set(PropertyType.IntelligenceProperty, this.createHardnessProperty)
+      .set(PropertyType.ConcentrationProperty, this.createConcentrationProperty)
+      .set(PropertyType.LuckProperty, this.createLuckProperty)
+      .set(PropertyType.MasterBoxingProperty, this.createMasterBoxingProperty)
+      .set(PropertyType.MasterKnifeProperty, this.createMasterKnifeProperty)
+      .set(PropertyType.MasterSwordProperty, this.createMasterSwordProperty)
+      .set(PropertyType.MasterMagicProperty, this.createMasterBoxingProperty);
   }
 
-  create(propertyMap: Map<PropertyType, number>) {
-    return Object.keys(propertyMap).map((key) => {
+  create(propertyValueMap: Map<PropertyType, number>) {
+    const propertyMap = new Map();
+    propertyValueMap.forEach((value, key) => {
       const propertyCreator = this.propertyCreatorMap.get(key);
       if (!propertyCreator) {
         throw new Error(`没有属性${key}的创造器，请检查传入的配置是否正确`);
       }
-      return propertyCreator(propertyMap.get(key));
+      propertyMap.set(key, propertyCreator(value));
     });
+    return propertyMap;
   }
 
   createStrengthProperty(v: number) {

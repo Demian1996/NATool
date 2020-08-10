@@ -1,4 +1,5 @@
 import { ITalent } from '../Talent/types';
+import { PropertyType, IProperty } from '../Property/types';
 
 /**
  * @description 角色
@@ -8,7 +9,8 @@ export interface IRole {
   id: string;
   name: string;
   sex: Sex;
-  talentList: ITalent[];
+  propertyMap: Map<PropertyType, IProperty>;
+  talentMap: Map<string, ITalent>;
 }
 
 export enum Sex {

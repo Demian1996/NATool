@@ -10,14 +10,14 @@ export interface IProperty {
 }
 
 export enum PropertyType {
-  StrengthProperty, // 臂力
-  HardnessProperty, // 根骨
-  AgilityProperty, // 身法
-  IntelligenceProperty, // 悟性
-  ConcentrationProperty, // 定力
-  LuckProperty, // 福源
-  MasterBoxingProperty, // 拳法
-  MasterSwordProperty, // 剑法
-  MasterKnifeProperty, // 刀法
-  MasterMagicProperty, // 奇门
+  StrengthProperty = 'strengthProperty', // 臂力
+  HardnessProperty = 'hardnessProperty', // 根骨
+  AgilityProperty = 'agilityProperty', // 身法
+  IntelligenceProperty = 'intelligenceProperty', // 悟性
+  ConcentrationProperty = 'concentrationProperty', // 定力
+  LuckProperty = 'luckProperty', // 福源
+  MasterBoxingProperty = 'masterBoxingProperty', // 拳法
+  MasterSwordProperty = 'masterSwordProperty', // 剑法
+  MasterKnifeProperty = 'masterKnifeProperty', // 刀法
+  MasterMagicProperty = 'masterMagicProperty', // 奇门
 }
