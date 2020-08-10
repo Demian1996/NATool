@@ -1,17 +1,17 @@
-import { ITalent } from '../talent/types';
+import { ITalent } from '../Talent/types';
 
 /**
  * @description 角色
  * @interface IRole
  */
 export interface IRole {
-  id: symbol;
+  id: string;
   name: string;
-  sex: ISex;
+  sex: Sex;
   talentList: ITalent[];
 }
 
-export enum ISex {
+export enum Sex {
   Male,
   Female,
   All, // 性别不限制武学的选择，如巫锦

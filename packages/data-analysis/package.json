@@ -5,6 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "^6.6.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.0.1"
   }
 }

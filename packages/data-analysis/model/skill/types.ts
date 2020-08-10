@@ -1,5 +1,5 @@
-import { IProperty } from '../property/types';
-import { ITalent } from '../talent/types';
+import { IProperty } from '../Property/types';
+import { ITalent } from '../Talent/types';
 
 /**
  * @description 技能
@@ -23,7 +23,7 @@ interface IActiveSkill extends ISkill {
 
 interface IActiveBuffSkill extends IActiveSkill {
   isActive: true;
-  execute: (inputPropertyMap: Map<string, IProperty>) => Map
+  execute: (inputPropertyMap: Map<string, IProperty>) => Map<string, IProperty>;
 }
 
 // 被动技能和天赋等价
